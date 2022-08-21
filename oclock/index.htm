@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to my O'clock page's</title>
+</head>
+
+<body>
+  <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+
+  <script>
+    function showTime() {
+      let Dates = new Date();
+      let hours = Dates.getHours(); // 0 - 23
+      minutes = Dates.getMinutes(); // 0
+
+      let seconds = Dates.getSeconds(); // 0 -
+      let session = "AM";
+
+      if (hours == 0) {
+        hours = 12;
+      }
+      if (hours > 12) {
+        hours = hours - 12;
+        session = "PM"
+      }
+      hours = (hours < 10) ? "0" + hours : hours;
+      minutes = (minutes < 10) ? "0" + minutes : minutes;
+      seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+      let time = hours + ":" + minutes + ":" + seconds + ":" + session;
+      document.getElementById("MyClockDisplay").innerText = time;
+
+      document.getElementById("MyClockDisplay").textContent = time;
+
+      setTimeout(showTime, 700);
+    }
+
+    showTime();
+  </script>
+
+</body>
+
+</html>
